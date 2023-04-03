@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug="false" scan="true" scanPeriod="30seconds">
+    <appender name="ConsoleTRACE"
+              class="ch.qos.logback.core.ConsoleAppender"
+              withJansi="false">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>TRACE</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %white(%5level) %magenta(%-4r) --- [%15t] %cyan(%-40c) :%blue(%replace( [%marker]){' \[\]',''}) %m%n%ex{full}</pattern>
+        </encoder>
+    </appender>
+    <appender name="ConsoleDEBUG"
+              class="ch.qos.logback.core.ConsoleAppender"
+              withJansi="false">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5level %magenta(%-4r) --- [%15t] %cyan(%-40c) :%blue(%replace( [%marker]){' \[\]',''}) %m%n%ex{full}</pattern>
+        </encoder>
+    </appender>
+    <appender name="ConsoleINFO"
+              class="ch.qos.logback.core.ConsoleAppender"
+              withJansi="false">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %green(%5level) %magenta(%-4r) --- [%15t] %cyan(%-40c) :%blue(%replace( [%marker]){' \[\]',''}) %m%n%ex{full}</pattern>
+        </encoder>
+    </appender>
+    <appender name="ConsoleERROR"
+              class="ch.qos.logback.core.ConsoleAppender"
+              withJansi="false">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %red(%5level) %magenta(%-4r) --- [%15t] %cyan(%-40c) :%blue(%replace( [%marker]){' \[\]',''}) %m%n%ex{full}</pattern>
+        </encoder>
+    </appender>
+    <appender name="ConsoleWARN"
+              class="ch.qos.logback.core.ConsoleAppender"
+              withJansi="false">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %yellow(%5level) %magenta(%-4r) --- [%15t] %cyan(%-40c) :%blue(%replace( [%marker]){' \[\]',''}) %m%n%ex{full}</pattern>
+        </encoder>
+    </appender>
+    <appender name="Console"
+              class="ch.qos.logback.core.ConsoleAppender"
+              withJansi="false">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5level %magenta(%-4r) --- [%15t] %cyan(%-40c) :%blue(%replace( [%marker]){' \[\]',''}) %m%n%ex{full}</pattern>
+        </encoder>
+    </appender>
+    <!--TRACE、DEBUG、INFO、WARN、ERROR、ALL、OFF-->
+    <root level="INFO">
+        <appender-ref ref="ConsoleTRACE"/>
+        <appender-ref ref="ConsoleDEBUG"/>
+        <appender-ref ref="ConsoleINFO"/>
+        <appender-ref ref="ConsoleWARN"/>
+        <appender-ref ref="ConsoleERROR"/>
+    </root>
+    <logger name="io.github.lostblackknight.item.stream" level="DEBUG" additivity="false">
+        <appender-ref ref="ConsoleTRACE"/>
+        <appender-ref ref="ConsoleDEBUG"/>
+        <appender-ref ref="ConsoleINFO"/>
+        <appender-ref ref="ConsoleWARN"/>
+        <appender-ref ref="ConsoleERROR"/>
+    </logger>
+</configuration>
